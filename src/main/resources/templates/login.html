@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <title>河北省科技创新年报统计系统</title>
+    <style>
+        .sr {margin:1cm 14cm 0cm 15cm}
+    </style>
+
+</head>
+<body>
+<li class="dropdown" th:if="${session.wc==true}">
+    <div class="alert alert-danger" role="alert">用户名密码输入错误！</div>
+</li>
+<li class="dropdown" th:if="${session.wc==false}">
+    <div class="alert alert-danger" role="alert">密码输入错误！</div>
+</li>
+<form action="login">
+    <div class="form-group sr" >
+        <label for="name">用户名</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="name">
+    </div>
+    <div class="form-group sr">
+        <label for="password">密码</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-default sr">提交</button>
+</form>
+</body>
+</html>
