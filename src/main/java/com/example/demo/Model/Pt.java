@@ -3,7 +3,7 @@ package com.example.demo.Model;
 public class Pt {
     private int id;
     private String o1;
-    private String o2;
+    private int o2;
     private String o3;
     private String o4;
     private String o5;
@@ -46,11 +46,11 @@ public class Pt {
         this.o1 = o1;
     }
 
-    public String getO2() {
+    public int getO2() {
         return o2;
     }
 
-    public void setO2(String o2) {
+    public void setO2(int o2) {
         this.o2 = o2;
     }
 
@@ -58,7 +58,7 @@ public class Pt {
         return o3;
     }
 
-    public void setO3(String o3) {
+    public void setO3(String  o3) {
         this.o3 = o3;
     }
 

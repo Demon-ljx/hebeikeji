@@ -58,7 +58,7 @@
             <ul id="main-menu" class="main-menu">
                 <!-- add class "multiple-expanded" to allow multiple submenus to open -->
                 <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-                <li class="opened active">
+                <li>
                     <a href="main">
                         <i class="linecons-cog"></i>
                         <span class="title">封面</span>
@@ -78,7 +78,7 @@
                         <span class="title">二、主要研究方向和体系结构</span>
                     </a>
                     <ul style="display: block;">
-                        <li>
+                        <li class="opened active">
                             <a href="2_1">
                                 <span class="title">主要研究方向</span>
                             </a>
@@ -213,6 +213,7 @@
         </li>
         <form action="yj">
             <div class="form-group" >
+                <a class="glyphicon glyphicon-plus"></a>
                 <label for="fx">主要研究方向</label>
                 <input type="text" class="form-control" id="fx" name="fx">
             </div>

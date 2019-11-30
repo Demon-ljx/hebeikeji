@@ -28,10 +28,22 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <style>
+           select {
+                   width: 200px;
+                   padding: 5px;
+                }
+            .code-print{
+                    box-sizing: border-box;
+                    padding:10px;
+                    margin-top:20px;
+                    width:200px;
+                    border:1px solid blue;
+                }
+        </style>
 
 </head>
-<body >
+<body  ng-app="areaApp">
 
 
 <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
@@ -202,7 +214,143 @@
             </ul>
 
         </nav>
+<!--        <div ng-controller="GetAreaCodeController">-->
+<!--            <div>-->
+<!--                &lt;!&ndash;ng-options中key作为select的value绑定到ng-model（就是省市区的编号),value为省市区的名字显示在下拉列表中&ndash;&gt;-->
+<!--                <select ng-model="areaObj.addressProvince"-->
+<!--                        ng-change="areaObj.addressCity=undefined;areaObj.addressDistrict=undefined"-->
+<!--                        ng-options="key as value for (key,value) in DISTRICTS['100000']">-->
+<!--                    <option value="">省</option>-->
+<!--                </select>-->
+<!--                <select ng-model="areaObj.addressCity"-->
+<!--                        ng-change="areaObj.addressDistrict=undefined;"-->
+<!--                        ng-options="key as value for (key,value) in DISTRICTS[areaObj.addressProvince]">-->
+<!--                    <option value="">市</option>-->
+<!--                </select>-->
+<!--                <select class="form-control form-control-new"-->
+<!--                        ng-model="areaObj.addressDistrict"-->
+<!--                        ng-options="key as value for (key,value) in DISTRICTS[areaObj.addressCity]">-->
+<!--                    <option value="">区</option>-->
+<!--                </select>-->
+<!--            </div>-->
+<!--            <div class="code-print">-->
+<!--                <p>【县级市没有区！】</p>-->
+<!--                <p>省编号：<span ng-bind="areaObj.addressProvince"></span></p>-->
+<!--                <p>市编号：<span ng-bind="areaObj.addressCity"></span></p>-->
+<!--                <p>区编号：<span ng-bind="areaObj.addressDistrict"></span></p>-->
+<!--                <p>最终编号:<span ng-bind="areaObj.getAreaCode(areaObj.addressProvince, areaObj.addressCity, areaObj.addressDistrict)"></span></p>-->
+<!--            </div>-->
+<!--        </div>-->
+        <form action="sss">
+        <div ng-controller="GetAreaCodeController">
 
+            <!--ng-options中key作为select的value绑定到ng-model（就是省市区的编号),value为省市区的名字显示在下拉列表中-->
+
+            <select name="sheng" id="sheng" ng-model="areaObj.addressProvince"
+
+                    ng-change="areaObj.addressCity=undefined;areaObj.addressDistrict=undefined"
+
+                    ng-options="key as value for (key,value) in DISTRICTS['100000']">
+
+                <option value="">省</option>
+
+            </select>
+
+            <select name="shi" id="shi" ng-model="areaObj.addressCity"
+
+                    ng-change="areaObj.addressDistrict=undefined;"
+
+                    ng-options="key as value for (key,value) in DISTRICTS[areaObj.addressProvince]">
+
+                <option value="">市</option>
+
+            </select>
+
+            <select name="qu" id="qu"
+
+                    ng-model="areaObj.addressDistrict"
+
+                    ng-options="key as value for (key,value) in DISTRICTS[areaObj.addressCity]">
+
+                <option value="">区</option>
+
+            </select>
+<!--            <div class="code-print">&ndash;&gt;-->
+<!--                                <p>【县级市没有区！】</p>-->
+<!--                                <p>省编号：<span ng-bind="areaObj.addressProvince"></span></p>-->
+<!--                                <p>市编号：<span ng-bind="areaObj.addressCity"></span></p>-->
+<!--                                <p>区编号：<span ng-bind="areaObj.addressDistrict"></span></p>-->
+<!--                                <p>最终编号:<span ng-bind="areaObj.getAreaCode(areaObj.addressProvince, areaObj.addressCity, areaObj.addressDistrict)"></span></p>-->
+<!--                            </div>-->
+        </div><br>
+            <button type="submit" class="btn btn-default" >查询</button>
+        </form>
+        <li th:if="${session.aaa==false}">
+            <div class="alert alert-danger" role="alert">抱歉，没找到！</div>
+        </li>
+        <form th:if="${session.aaa==true}">
+            <div class="alert alert-danger" role="alert">找到！</div>
+            <table class="table table-hover table-striped">
+                <tr>
+                    <td>平台名称:</td>
+                    <td>平台编号:</td>
+                    <td>批准年月:</td>
+                    <td>批准文号:</td>
+                    <td>技术领域:</td>
+                    <td>平台级别:</td>
+                    <td>所在市县:</td>
+
+                </tr>
+                <tr>
+                    <td th:text="${session.list1}"></td>
+                    <td th:text="${session.list2}"></td>
+                    <td th:text="${session.list3}"></td>
+                    <td th:text="${session.list4}"></td>
+                    <td th:text="${session.list5}"></td>
+                    <td th:text="${session.list6}"></td>
+                    <td th:text="${session.list7}"></td>
+                </tr>
+                <tr th:if="${session.bbb==true}">
+                    <td th:text="${session.list14}"></td>
+                    <td th:text="${session.list15}"></td>
+                    <td th:text="${session.list16}"></td>
+                    <td th:text="${session.list17}"></td>
+                    <td th:text="${session.list18}"></td>
+                    <td th:text="${session.list19}"></td>
+                    <td th:text="${session.list20}"></td>
+                </tr>
+                <tr th:if="${session.ccc==true}">
+                    <td th:text="${session.list27}"></td>
+                    <td th:text="${session.list28}"></td>
+                    <td th:text="${session.list29}"></td>
+                    <td th:text="${session.list30}"></td>
+                    <td th:text="${session.list31}"></td>
+                    <td th:text="${session.list32}"></td>
+                    <td th:text="${session.list33}"></td>
+                </tr>
+                <tr th:if="${session.ddd==true}">
+                    <td th:text="${session.list40}"></td>
+                    <td th:text="${session.list41}"></td>
+                    <td th:text="${session.list42}"></td>
+                    <td th:text="${session.list43}"></td>
+                    <td th:text="${session.list44}"></td>
+                    <td th:text="${session.list45}"></td>
+                    <td th:text="${session.list46}"></td>
+                </tr>
+                <tr th:if="${session.eee==true}">
+                    <td th:text="${session.list53}"></td>
+                    <td th:text="${session.list54}"></td>
+                    <td th:text="${session.list55}"></td>
+                    <td th:text="${session.list56}"></td>
+                    <td th:text="${session.list57}"></td>
+                    <td th:text="${session.list58}"></td>
+                    <td th:text="${session.list59}"></td>
+                </tr>
+            </table>
+        </form>
+        <script src="/js/angular.js"></script>
+
+        <script src="/js/areaCodes.js"></script>
 <!--        <table border="1" cellpadding="4" width="300" align="center">-->
 <!--            <tr bgcolor="gray">-->
 <!--                <td>人员情况</td>-->

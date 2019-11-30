@@ -60,7 +60,7 @@
             <ul id="main-menu" class="main-menu">
                 <!-- add class "multiple-expanded" to allow multiple submenus to open -->
                 <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-                <li class="opened active">
+                <li>
                     <a href="main">
                         <i class="linecons-cog"></i>
                         <span class="title">封面</span>
@@ -115,7 +115,7 @@
                         <span class="title">三、人员情况</span>
                     </a>
                     <ul style="display: block;">
-                        <li>
+                        <li  class="opened active">
                             <a href="3_1">
                                 <span class="title">现有人才列表</span>
                             </a>
@@ -296,14 +296,13 @@
         </form>
 
         <form action="speople" method="post">
-            <table border="1" th:height="100dx" align="center" class="table-hover">
+            <table border="1" cellpadding="4" width="300" align="center" class="table-hover">
                 <tr bgcolor="gray">
                     <td>人员情况</td>
                 </tr>
                 <tr>
                     <td>姓名:</td>
                     <td>性别:</td>
-                    <td>出生年月:</td>
                     <td>学历:</td>
                     <td>学位:</td>
                     <td>毕业学校:</td>
@@ -319,7 +318,6 @@
                 <tr>
                     <td><input type="text" name="o1" size="10"></td>
                     <td><input type="text" name="o2" size="10"></td>
-                    <td><input type="text" name="o3" size="10"></td>
                     <td>
                         <select name="o4">
                             <option value ="硕士以上">硕士以上</option>
@@ -405,10 +403,8 @@
 <!--            </script>-->
 
         <form th:if="${session.wc==true}">
-            <table border="1" th:height="100dx" align="center">
-                <tr bgcolor="gray">
-                    <td>人员情况</td>
-                </tr>
+            <table class="table table-hover table-striped">
+
                 <tr>
                     <td>姓名:</td>
                     <td>性别:</td>
@@ -425,7 +421,7 @@
                     <td>人事关系所在单位:</td>
 
                 </tr>
-                <tr th:if="${session.qwe==true}">
+                <tr>
                     <td th:text="${session.map1}"></td>
                     <td th:text="${session.map2}"></td>
                     <td th:text="${session.map3}"></td>
@@ -440,7 +436,7 @@
                     <td th:text="${session.map12}"></td>
                     <td th:text="${session.map13}"></td>
                 </tr>
-                <tr th:if="${session.asd==true}">
+                <tr th:if="${session.qwe==true}">
                     <td th:text="${session.map14}"></td>
                     <td th:text="${session.map15}"></td>
                     <td th:text="${session.map16}"></td>
@@ -455,7 +451,7 @@
                     <td th:text="${session.map25}"></td>
                     <td th:text="${session.map26}"></td>
                 </tr>
-                <tr>
+                <tr th:if="${session.asd==true}">
                     <td th:text="${session.map27}"></td>
                     <td th:text="${session.map28}"></td>
                     <td th:text="${session.map29}"></td>
@@ -470,8 +466,40 @@
                     <td th:text="${session.map38}"></td>
                     <td th:text="${session.map39}"></td>
                 </tr>
+                <tr th:if="${session.zxc==true}">
+                    <td th:text="${session.map40}"></td>
+                    <td th:text="${session.map41}"></td>
+                    <td th:text="${session.map42}"></td>
+                    <td th:text="${session.map43}"></td>
+                    <td th:text="${session.map44}"></td>
+                    <td th:text="${session.map45}"></td>
+                    <td th:text="${session.map46}"></td>
+                    <td th:text="${session.map47}"></td>
+                    <td th:text="${session.map48}"></td>
+                    <td th:text="${session.map49}"></td>
+                    <td th:text="${session.map50}"></td>
+                    <td th:text="${session.map51}"></td>
+                    <td th:text="${session.map52}"></td>
+                </tr>
+                <tr th:if="${session.rty==true}">
+                    <td th:text="${session.map53}"></td>
+                    <td th:text="${session.map54}"></td>
+                    <td th:text="${session.map55}"></td>
+                    <td th:text="${session.map56}"></td>
+                    <td th:text="${session.map57}"></td>
+                    <td th:text="${session.map58}"></td>
+                    <td th:text="${session.map59}"></td>
+                    <td th:text="${session.map60}"></td>
+                    <td th:text="${session.map61}"></td>
+                    <td th:text="${session.map62}"></td>
+                    <td th:text="${session.map63}"></td>
+                    <td th:text="${session.map64}"></td>
+                    <td th:text="${session.map65}"></td>
+                </tr>
             </table>
         </form>
+
+
 
         <footer class="main-footer sticky footer-type-1">
 

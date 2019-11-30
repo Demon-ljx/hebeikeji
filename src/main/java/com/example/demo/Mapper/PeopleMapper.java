@@ -6,8 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import java.util.List;
-
 @Mapper
 public interface PeopleMapper {
     @Insert("insert into 3_people(name,sex,year,xl,xw,school,zy,zc,rccc,gd,gzxz,ryzt,rsdw) values (#{name},#{sex},#{year},#{xl},#{xw},#{school},#{zy},#{zc},#{rccc},#{gd},#{gzxz},#{ryzt},#{rsdw})")

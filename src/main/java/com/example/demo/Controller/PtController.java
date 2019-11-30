@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.Mapper.PtMapper;
 import com.example.demo.Mapper.PtzrMapper;
+import com.example.demo.Model.IdWorker;
 import com.example.demo.Model.Pt;
 import com.example.demo.Model.Ptzr;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class PtController {
 
+    @Autowired
+    private IdWorker idWorker;
 
     @Autowired
     private PtMapper ptMapper;
@@ -21,7 +24,6 @@ public class PtController {
 
     @GetMapping("/pt")
     public String display(@RequestParam(name="o1")String o1,
-                          @RequestParam(name="o2")String o2,
                           @RequestParam(name="o3")String o3,
                           @RequestParam(name="o4")String o4,
                           @RequestParam(name="o5")String o5,
@@ -60,6 +62,7 @@ public class PtController {
         Pt pt=new Pt();
         Ptzr ptzr=new Ptzr();
         pt.setO1(o1);
+        int o2 = (int) idWorker.nextId();
         pt.setO2(o2);
         pt.setO3(o3);
         pt.setO4(o4);

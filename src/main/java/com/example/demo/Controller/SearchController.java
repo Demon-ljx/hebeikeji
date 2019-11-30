@@ -31,7 +31,6 @@ public class SearchController {
     @RequestMapping(value = "/speople", method = RequestMethod.POST)
     public String find(@RequestParam(name = "o1") String o1,
                        @RequestParam(name = "o2") String o2,
-                       @RequestParam(name = "o3") String o3,
                        @RequestParam(name = "o4") String o4,
                        @RequestParam(name = "o5") String o5,
                        @RequestParam(name = "o6") String o6,
@@ -45,7 +44,7 @@ public class SearchController {
                        HttpServletRequest request) throws SQLException, ClassNotFoundException {
         String sql = "select name,sex,year,xl,xw,school,zy,zc,rccc,gd,gzxz,ryzt,rsdw from 3_people where ";
         if (o1 != null && !o1.equals("")) {
-            sql = sql + "name=" + "\"" + o1 + "\"";
+            sql = sql + "name like" + "\"" + "%" + o1 + "%" + "\"";
             if (o4 != null && !o4.equals("")) {
                 sql = sql + " and " + "xl=" + "\"" + o4 + "\"";
             }
@@ -56,9 +55,6 @@ public class SearchController {
         }
         if (o2 != null && !o2.equals("")) {
             sql = sql + " and " + "sex=" + "\"" + o2 + "\"";
-        }
-        if (o3 != null && !o3.equals("")) {
-            sql = sql + " and " + "year=" + "\"" + o3 + "\"";
         }
 
         if (o5 != null && !o5.equals("")) {
@@ -94,7 +90,7 @@ public class SearchController {
         Statement stmt; //创建声明
         stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
-        List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+        List<Map<String, String>> list = new ArrayList<>();
         if (rs != null) {
             while (rs.next()) {
                 Map<String, String> map = new HashMap<String, String>();
@@ -116,7 +112,10 @@ public class SearchController {
         }
         request.getSession().setAttribute("list", list);
         int i=list.size();
-        if (i >= 0) {
+        if(i==0){
+            request.getSession().setAttribute("wc", false);
+        }
+        if (i >= 1) {
             request.getSession().setAttribute("map1", list.get(0).get("name"));
             request.getSession().setAttribute("map2", list.get(0).get("sex"));
             request.getSession().setAttribute("map3", list.get(0).get("year"));
@@ -131,7 +130,11 @@ public class SearchController {
             request.getSession().setAttribute("map12", list.get(0).get("ryzt"));
             request.getSession().setAttribute("map13", list.get(0).get("rsdw"));
             request.getSession().setAttribute("wc", true);
-            if (i >= 1) {
+            request.getSession().setAttribute("qwe", false);
+            request.getSession().setAttribute("asd", false);
+            request.getSession().setAttribute("zxc", false);
+            request.getSession().setAttribute("rty", false);
+            if (i >= 2) {
                 request.getSession().setAttribute("map14", list.get(1).get("name"));
                 request.getSession().setAttribute("map15", list.get(1).get("sex"));
                 request.getSession().setAttribute("map16", list.get(1).get("year"));
@@ -146,7 +149,10 @@ public class SearchController {
                 request.getSession().setAttribute("map25", list.get(1).get("ryzt"));
                 request.getSession().setAttribute("map26", list.get(1).get("rsdw"));
                 request.getSession().setAttribute("qwe", true);
-                if (i >= 2) {
+                request.getSession().setAttribute("asd", false);
+                request.getSession().setAttribute("zxc", false);
+                request.getSession().setAttribute("rty", false);
+                if (i >= 3) {
                     request.getSession().setAttribute("map27", list.get(2).get("name"));
                     request.getSession().setAttribute("map28", list.get(2).get("sex"));
                     request.getSession().setAttribute("map29", list.get(2).get("year"));
@@ -161,13 +167,45 @@ public class SearchController {
                     request.getSession().setAttribute("map38", list.get(2).get("ryzt"));
                     request.getSession().setAttribute("map39", list.get(2).get("rsdw"));
                     request.getSession().setAttribute("asd", true);
-
+                    request.getSession().setAttribute("zxc", false);
+                    request.getSession().setAttribute("rty", false);
+                    if (i >= 4) {
+                        request.getSession().setAttribute("map40", list.get(3).get("name"));
+                        request.getSession().setAttribute("map41", list.get(3).get("sex"));
+                        request.getSession().setAttribute("map42", list.get(3).get("year"));
+                        request.getSession().setAttribute("map43", list.get(3).get("xl"));
+                        request.getSession().setAttribute("map44", list.get(3).get("xw"));
+                        request.getSession().setAttribute("map45", list.get(3).get("school"));
+                        request.getSession().setAttribute("map46", list.get(3).get("zy"));
+                        request.getSession().setAttribute("map47", list.get(3).get("zc"));
+                        request.getSession().setAttribute("map48", list.get(3).get("rccc"));
+                        request.getSession().setAttribute("map49", list.get(3).get("gd"));
+                        request.getSession().setAttribute("map50", list.get(3).get("gzxz"));
+                        request.getSession().setAttribute("map51", list.get(3).get("ryzt"));
+                        request.getSession().setAttribute("map52", list.get(3).get("rsdw"));
+                        request.getSession().setAttribute("zxc", true);
+                        request.getSession().setAttribute("rty", false);
+                        if (i >= 5) {
+                            request.getSession().setAttribute("map53", list.get(4).get("name"));
+                            request.getSession().setAttribute("map54", list.get(4).get("sex"));
+                            request.getSession().setAttribute("map55", list.get(4).get("year"));
+                            request.getSession().setAttribute("map56", list.get(4).get("xl"));
+                            request.getSession().setAttribute("map57", list.get(4).get("xw"));
+                            request.getSession().setAttribute("map58", list.get(4).get("school"));
+                            request.getSession().setAttribute("map59", list.get(4).get("zy"));
+                            request.getSession().setAttribute("map60", list.get(4).get("zc"));
+                            request.getSession().setAttribute("map61", list.get(4).get("rccc"));
+                            request.getSession().setAttribute("map62", list.get(4).get("gd"));
+                            request.getSession().setAttribute("map63", list.get(4).get("gzxz"));
+                            request.getSession().setAttribute("map64", list.get(4).get("ryzt"));
+                            request.getSession().setAttribute("map65", list.get(4).get("rsdw"));
+                            request.getSession().setAttribute("rty", true);
+                        }
+                    }
                 }
             }
-
         }
         list=null;
-        i=0;
         return "redirect:/3_1";
 
     }
