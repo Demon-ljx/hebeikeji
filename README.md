@@ -3,3 +3,4 @@
 springboot+mybatis
 ### 打开网址
 http://localhost:8787
+![image](https://github.com/aslhdhalshd/hebeikeji/blob/master/xx.png)
